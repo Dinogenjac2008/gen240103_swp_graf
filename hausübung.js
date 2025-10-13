@@ -3,7 +3,7 @@ export class Bruch {
     if (nenner === 0) {
       throw new Error("Nenner darf nicht 0 sein");
     }
-    // Vorzeichen in den Zähler bringen
+    // Vorzeichen in den Zähler bringenö
     if (nenner < 0) {
       zaehler = -zaehler;
       nenner = -nenner;
