@@ -12,5 +12,5 @@ function istPrimzahl(n: number): number {
 const zahl = 17;
 if (istPrimzahl(zahl) === 1) {
   console.log(zahl + " ist eine Primzahl.");
-} else {
+} else 
   console.log(zahl + " ist keine Primzahl.");

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>Bosnien & Fußball — Boxmodell Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --bosnia-blue:#0b63c6;
+      --bosnia-yellow:#ffd400;
+      --accent:#1db954;
+      --grass:#2f9e44;
+      --white:#ffffff;
+      --card-bg: linear-gradient(135deg,#ffeedd,#ffdfe6);
+    }
+
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#f0f8ff 0%, #e8f7ee 100%);
+      color:#222;
+      padding: 2rem;
+      display:flex;
+      gap:2rem;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    /* Container / Stadion: margin demonstriert */
+    .stadion {
+      width: 420px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      margin: 1rem; /* außenabstand */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Header mit Flagge: padding demonstriert */
+    .stadion__header{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      padding: 18px; /* innenabstand */
+      background: linear-gradient(90deg, rgba(11,99,198,0.95), rgba(11,99,198,0.75));
+      color:var(--white);
+    }
+
+    .flagge {
+      width: 84px;
+      height: 56px;
+      border: 4px solid rgba(255,255,255,0.6); /* border demonstriert */
+      border-radius:6px;
+      background:
+        linear-gradient(90deg, transparent 44%, var(--bosnia-yellow) 44%, var(--bosnia-yellow) 56%, transparent 56%),
+        radial-gradient(circle at 30% 35%, var(--white) 8%, transparent 9%),
+        var(--bosnia-blue);
+      position:relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Sterne/Diagonale: simple Dekoration für die Flagge */
+    .flagge::after{
+      content: "★ ★ ★";
+      position:absolute;
+      left: 10px;
+      top: 6px;
+      color: rgba(255,255,255,0.95);
+      font-size:12px;
+      transform: rotate(-18deg);
+      letter-spacing:4px;
+    }
+
+    .stadion__title{
+      font-weight:700;
+      font-size:1.15rem;
+      line-height:1;
+    }
+    .stadion__subtitle{
+      font-size:0.85rem;
+      opacity:0.9;
+    }
+
+    /* Spielfeld / Card body: padding + border */
+    .pitch {
+      padding: 20px; /* innenabstand rund ums Spielfeld */
+      background: linear-gradient(180deg,#b8f1a5, #74d06b);
+      border-top: 6px solid rgba(255,255,255,0.3);
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    .box {
+      flex:1;
+      min-width:0;
+      background: rgba(255,255,255,0.85);
+      padding:16px;
+      border-radius:10px;
+      border: 3px solid rgba(0,0,0,0.06);
+      margin: 6px; /* außenabstand */
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+    }
+
+    .score {
+      font-size:2.4rem;
+      font-weight:800;
+      color:var(--accent);
+      text-align:center;
+      padding:8px 12px;
+      border-radius:8px;
+      border: 4px double rgba(29,185,84,0.18);
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+    }
+
+    .players {
+      display:flex;
+      gap:8px;
+      margin-top:8px;
+      flex-wrap:wrap;
+    }
+
+    .player {
+      background: linear-gradient(180deg,var(--bosnia-blue), #0270b6);
+      color:var(--white);
+      padding:8px 10px; /* innenabstand */
+      border-radius:6px;
+      border: 2px solid rgba(255,255,255,0.12);
+      margin:4px; /* außenabstand zwischen Buttons */
+      font-weight:600;
+      box-shadow: 0 4px 8px rgba(3,53,99,0.18);
+    }
+
+    /* Fußzeile mit farbigem Rand */
+    .stadion__footer{
+      padding:12px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      border-top: 6px solid var(--bosnia-yellow); /* sichtbarer Border */
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+    }
+
+    .cta{
+      background: linear-gradient(90deg,#ff4d6d,#ffd54f);
+      padding:10px 14px;
+      border-radius:8px;
+      border:3px solid rgba(0,0,0,0.06);
+      color:#111;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(255,77,109,0.14);
+    }
+
+    /* Responsiv */
+    @media (max-width:520px){
+      .stadion { width: 100%; }
+      .stadion__header{ padding:12px; }
+      .pitch{ flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <section class="stadion" aria-label="Bosnien Stadion Karte">
+    <header class="stadion__header">
+      <div class="flagge" title="Flagge Bosnien-Herzegowina"></div>
+      <div>
+        <div class="stadion__title">Bosnien & Herzegowina</div>
+        <div class="stadion__subtitle">Fußball Kreativ-Widget — Padding / Margin / Border Demo</div>
+      </div>
+    </header>
+
+    <div class="pitch">
+      <div class="box">
+        <div style="font-size:0.95rem; color:#333; font-weight:700;">Heimmannschaft</div>
+        <div class="players" aria-hidden="true">
+          <div class="player">Džeko</div>
+          <div class="player">Pjanić</div>
+          <div class="player">Višća</div>
+        </div>
+      </div>
+
+      <div class="box" style="text-align:center;">
+        <div style="font-size:0.9rem; color:#444; margin-bottom:6px;">Ergebnis</div>
+        <div class="score">2 : 1</div>
+        <div style="font-size:0.78rem; margin-top:8px; color:#333;">Minute 86 — Spannend!</div>
+      </div>
+
+      <div class="box">
+        <div style="font-size:0.95rem; color:#333; font-weight:700;">Gastmannschaft</div>
+        <div class="players" aria-hidden="true">
+          <div class="player" style="background:#ff6b6b">Striker</div>
+          <div class="player" style="background:#6b5bff">Mittelfeld</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="stadion__footer">
+      <div style="font-weight:700;">Stadion: Grüne Arena</div>
+      <div class="cta">Supporte die Mannschaft</div>
+    </footer>
+  </section>
+</body>
+</html>
