@@ -40,16 +40,20 @@ dino
     }
 
     /* Header mit Flagge: padding demonstriert */
-    .stadion__header{
+    .stadion__header
+    {
+
       display:flex;
       gap:1rem;
       align-items:center;
       padding: 18px; /* innenabstand */
       background: linear-gradient(90deg, rgba(11,99,198,0.95), rgba(11,99,198,0.75));
       color:var(--white);
+
     }
 
-    .flagge {
+    .flagge
+    {
       width: 84px;
       height: 56px;
       border: 4px solid rgba(255,255,255,0.6); /* border demonstriert */
@@ -155,7 +159,6 @@ dino
       box-shadow: 0 6px 18px rgba(255,77,109,0.14);
     }
 
-    /* Responsiv */
     @media (max-width:520px){
       .stadion { width: 100%; }
       .stadion__header{ padding:12px; }
@@ -190,9 +193,9 @@ dino
       </div>
 
       <div class="box">
-        <div style="font-size:0.95rem; color:#333; font-weight:700;">Gastmannschaft</div>
+        <div style="font-size:0.95rem; color:#333; font-weight:700;">Österreich</div>
         <div class="players" aria-hidden="true">
-          <div class="player" style="background:#ff6b6b">Striker</div>
+          <div class="player" style="background:#ff6b6b">Arnautović</div>
           <div class="player" style="background:#6b5bff">Mittelfeld</div>
         </div>
       </div>
