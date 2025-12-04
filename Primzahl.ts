@@ -14,3 +14,4 @@ if (istPrimzahl(zahl) === 1) {
   console.log(zahl + " ist eine Primzahl.");
 } else 
   console.log(zahl + " ist keine Primzahl.");
+         

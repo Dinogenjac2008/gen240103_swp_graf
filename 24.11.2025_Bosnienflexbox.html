@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Bosnien & Fußball — Flexbox Version</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
+    <style>
     :root{
       --bosnia-blue:#0b63c6;
       --bosnia-yellow:#ffd400;
@@ -74,7 +74,8 @@
       gap:16px;
     }
 
-    .box{
+    .box {
+      min-height: 250px; /* hinzugefügt: Box verlängert */
       flex:1;
       background:rgba(255,255,255,0.85);
       padding:16px;
@@ -99,51 +100,12 @@
       border:2px solid rgba(255,255,255,0.12);
     }
 
-    /* --- Änderungen: Score als Flexbox + blinkende Zahlen --- */
     .score{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
       font-size:2.4rem;
       font-weight:800;
       color:var(--accent);
       text-align:center;
-      padding:6px 10px;
-      border-radius:8px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
-      border: 3px solid rgba(29,185,84,0.12);
     }
-
-    .score .digit{
-      display:inline-flex;
-      min-width:1.1ch;
-      justify-content:center;
-      align-items:center;
-      padding:6px 10px;
-      border-radius:6px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
-      color: #0b3e2f;
-    }
-
-    .score .colon{
-      font-weight:900;
-      color:#0b3e2f;
-      opacity:0.95;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; transform: translateY(0); }
-      50% { opacity: 0; transform: translateY(-4px); }
-    }
-
-    /* blink-Klasse animiert die Zahl */
-    .digit.blink {
-      animation: blink 1s infinite;
-    }
-
-    /* erlauben, dass linke/rechte Zahl unterschiedlich blinken (optional) */
-    .digit.blink.delay { animation-delay: 0.25s; }
 
     .stadion__footer{
       padding:12px 18px;
@@ -191,15 +153,8 @@
 
       <div class="box" style="text-align:center;">
         <div>Ergebnis</div>
-
-        <!-- Score als Flexbox mit einzelnen Ziffern/Trennzeichen -->
-        <div class="score" id="score" aria-live="polite">
-          <span class="digit blink" id="leftDigit">2</span>
-          <span class="colon">:</span>
-          <span class="digit blink delay" id="rightDigit">1</span>
-        </div>
-
-        <div style="margin-top:8px;">Minute 86 — Spannend!</div>
+        <div class="score">2 : 1</div>
+        <div>Minute 86 — Spannend!</div>
       </div>
 
       <div class="box">
@@ -216,25 +171,5 @@
       <div class="cta">Supporte die Mannschaft</div>
     </footer>
   </section>
-
-  <script>
-    // kleine Demo: beim Klick auf Score kurz anderes Blinken (optional)
-    const left = document.getElementById('leftDigit');
-    const right = document.getElementById('rightDigit');
-    const score = document.getElementById('score');
-
-    score.addEventListener('click', () => {
-      // togglet blink-Klasse kurz, damit Effekt sichtbar wird
-      left.classList.toggle('blink');
-      right.classList.toggle('blink');
-      setTimeout(() => {
-        left.classList.add('blink');
-        right.classList.add('blink');
-      }, 600);
-    });
-
-    // Beispiel: Animation nur bei Änderung (simuliert)
-    // setTimeout(() => { left.textContent = '3'; left.classList.add('blink'); }, 2000);
-  </script>
 </body>
 </html>
